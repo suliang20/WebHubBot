@@ -12,8 +12,8 @@ from items import PornVideoItem
 
 class PornhubMongoDBPipeline(object):
     def __init__(self):
-        clinet = pymongo.MongoClient("localhost", 27017)
-        db = clinet["PornHub"]
+        client = pymongo.MongoClient("mongodb://admin:admin@localhost", 27017)
+        db = client["PornHub"]
         self.PhRes = db["PhRes"]
         idx = IndexModel([('link_url', ASCENDING)], unique=True)
         self.PhRes.create_indexes([idx])
